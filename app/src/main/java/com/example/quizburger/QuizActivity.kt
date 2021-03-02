@@ -7,6 +7,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import layout.Quiz
+
 
 
 class QuizActivity : AppCompatActivity() {
