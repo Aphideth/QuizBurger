@@ -6,12 +6,18 @@ import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import boofcv.alg.fiducial.qrcode.QrCodeEncoder
 import boofcv.alg.fiducial.qrcode.QrCodeGeneratorImage
 import boofcv.android.ConvertBitmap
+import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
+
+    //lateinit var imageQr : ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -39,7 +45,7 @@ class MainActivity : AppCompatActivity() {
             imageQr.setImageBitmap( generateQrCode ("EN-BURGER-FREE-4541278412003659"))
         }
         if(score in 0..1){
-            Toast.makeText(this, "Désolé, tu n'asps de gain", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Désolé, tu n'as pas de gain", Toast.LENGTH_SHORT).show()
             imageQr.setImageBitmap(null)
         }
     }

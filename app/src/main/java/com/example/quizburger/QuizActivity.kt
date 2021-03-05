@@ -4,11 +4,12 @@ import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
+import android.widget.AutoCompleteTextView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import layout.Quiz
-
+import kotlinx.android.synthetic.main.activity_quiz.*
 
 
 class QuizActivity : AppCompatActivity() {
@@ -17,10 +18,10 @@ class QuizActivity : AppCompatActivity() {
     var nbGoodAnswer: Int = 0
     var currentQuestion: Int = 0
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
-
 
         questionList.add(Quiz("Combien de steak contient Le Magik Burger ?", "3", "1", "4", 3))
         questionList.add(Quiz("Combien de steak contient Le Kamikaze Burger ?", "3", "6", "4", 2))
@@ -50,14 +51,18 @@ class QuizActivity : AppCompatActivity() {
         currentQuestion ++
 
         if(currentQuestion >= questionList.size){
-
             var alert = AlertDialog.Builder (this)
             if(nbGoodAnswer > 2){
                 alert.setTitle("Partie terminée")
                 alert.setMessage("Tu as eu : $nbGoodAnswer bonnes réponses !\nBravo ! Clique sur le bouton SCORES pour voir ton cadeau !")
                 alert.setPositiveButton("ok"){ dialog: DialogInterface?, which: Int -> finish()}
+                alert.show()
+            }else{
+                alert.setTitle("Partie terminé")
+                alert.setMessage("Tu as eu : $nbGoodAnswer bonnes réponses !\nDésolé, Meilleurs chances la prochaine fois !")
+                alert.setPositiveButton("ok"){ dialogInterface: DialogInterface?, i: Int -> finish()}
+                alert.show()
             }
-
             val save = getSharedPreferences("com.example.quizburger", Context.MODE_PRIVATE)
             save.edit().putInt("myScores", nbGoodAnswer).apply()
         }else{
