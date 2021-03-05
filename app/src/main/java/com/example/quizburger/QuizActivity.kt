@@ -70,15 +70,15 @@ class QuizActivity : AppCompatActivity() {
         }
     }
 
-    fun reponseUnClick(view: View){
+    fun answerOneClick(view: View){
         controlerAnswer(1)
     }
 
-    fun reponseDeuxClick(view: View){
+    fun answerTwoClick(view: View){
         controlerAnswer(2)
     }
 
-    fun reponseTroisClick(view: View){
+    fun answerThreeClick(view: View){
         controlerAnswer(3)
     }
 
